@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<meta charset="utf-8" />
+<link rel="shortcut icon" href="https://gcproj.herokuapp.com/Ali/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="https://gcproj.herokuapp.com/Ali/favicon.ico" type="image/x-icon">
+
+<title>
+  首页 - Gordon’s NetDrives
+</title>
+<!--
+    OneManager: An index & manager of Onedrive auth by ysun.
+    Github: https://github.com/qkqpttgf/OneManager-php
+-->
+<meta name="description" content="A Onemanager-PHP site with Theme-renexmoe" />
+<meta name="theme-color" content="#fff" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jssycszyj/renexmoe-cdn@v21042004/css/app.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@4.2.2/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/noto-sans-sc@12.0.0/noto_sans_sc_regular/css.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/github.min.css">
+<link rel="stylesheet" href="https://gcproj.herokuapp.com/Ali/Screenshot_20210724_212750.jpg">
+<link rel="prerender" href="http://gcproj.herokuapp.com/Ali/">
+<link rel="prerender" href="https://gcproj.herokuapp.com/Onedrive/">
+</head>
+
+<body class="mdui-appbar-with-toolbar mdui-theme-layout-auto mdui-drawer-body-left mdui-theme-accent-pink">
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div class="mdui-toolbar">
+  <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white"
+    onclick='mdui.$("body").toggleClass("mdui-drawer-body-left");' id="toggle-drawer"><i
+      class="mdui-icon material-icons">menu</i></span>
+  <a href="/" class="mdui-typo-headline">
+    Gordon’s NetDrives
+  </a>
+</header>
+  <div class="mdui-drawer" id="main-drawer">
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+    <li class="mdui-list-item mdui-ripple" onclick="renexmoe.toggle_theme();">
+      <a class="mdui-list-item-icon mdui-icon material-icons">brightness_4</a><a class="mdui-list-item-content">深色模式</a>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+      <a href="https://gcproj.herokuapp.com/" class="mdui-list-item-icon mdui-icon material-icons">home</a><a href="https://gcproj.herokuapp.com/"
+        class="mdui-list-item-content" id="home">
+        首页</a>
+    </li>
+    
+<div class="mdui-divider"></div>
+<li class="mdui-list-item mdui-ripple">
+  <a href="https://gcproj.herokuapp.com/Onedrive/" class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue-grey">folder_shared</a>
+  <a href="https://gcproj.herokuapp.com/Onedrive/" class="mdui-list-item-content mdui-text-truncate disk_name">
+    Onedrive
+  </a>
+</li>
+<li class="mdui-list-item mdui-ripple">
+  <a href="https://gcproj.herokuapp.com/Ali/" class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue-grey">folder_shared</a>
+  <a href="https://gcproj.herokuapp.com/Ali/" class="mdui-list-item-content mdui-text-truncate disk_name">
+    AliYun
+  </a>
+</li>
+<div class="mdui-divider"></div>
+<div class="mdui-collapse-item">
+        <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+          <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">code</i>
+          <div class="mdui-list-item-content">管理链接</div>
+          <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+        </div>
+        <div class="mdui-collapse-item-body mdui-list" style="">
+                                  <a href="https://admin.microsoft.com/adminportal/home?#/users" class="mdui-list-item mdui-ripple ">MS Admin 面板</a>
+                                  <a href="https://portal.azure.com/#home" class="mdui-list-item mdui-ripple ">MS Azure 面板</a>
+		  <a href="https://ms-e5-renew-2.eastern.moe/" class="mdui-list-item mdui-ripple ">MS Renew 面板</a>
+                              </div>
+      </div>
+  </div>
+</div>
+  <div class="mdui-container">
+  <ul class="mdui-menu" id="admin-menu">
+  <li class="mdui-menu-item">
+    <a href="javascript:;" class="mdui-ripple back"><i
+        class="mdui-menu-item-icon mdui-icon material-icons">arrow_back</i>返回上一页</a>
+  </li>
+</ul>
+<i id="mouseplace" style="position: absolute"></i>
+<div class="mdui-dialog" id="login_input">
+  <div class="mdui-dialog-title">登录</div>
+  <div class="mdui-dialog-content" style="height: 108px">
+    <div class="mdui-textfield mdui-textfield-floating-label">
+      <i class="mdui-icon material-icons">lock</i><label class="mdui-textfield-label">密码</label><input
+        class="mdui-textfield-input" name="password1" type="password"
+        onkeydown='if(event.keyCode==13) document.querySelector("#login_btn").click();' />
+    </div>
+  </div>
+  <div class="mdui-dialog-actions">
+    <button class="mdui-btn mdui-ripple" mdui-dialog-close="" id="login_close">取消</button><button id="login_btn"
+      class="mdui-btn mdui-ripple" type="submit" value="登录">
+      登录
+    </button>
+  </div>
+</div> 
+  
+<div class="mdui-row mdui-shadow-3" style="margin: 20px 0; border-radius: 8px">
+  <ul class="mdui-list" id="file-list">
+    <li class="mdui-list-item mdui-ripple">
+      <div class="mdui-row mdui-col-xs-12">
+        <div class="mdui-col-xs-12 mdui-col-sm-7">
+          文件<i class="mdui-icon material-icons icon-sort" data-sort="name"
+            data-order="less">expand_less</i>
+        </div>
+        <div class="mdui-col-sm-3 mdui-text-right">
+          修改时间<i class="mdui-icon material-icons icon-sort" data-sort="date"
+            data-order="less">expand_less</i>
+        </div>
+        <div class="mdui-col-sm-2 mdui-text-right">
+          大小<i class="mdui-icon material-icons icon-sort" data-sort="size"
+            data-order="less">expand_less</i>
+        </div>
+      </div>
+    </li>
+    
+    
+<li class="mdui-list-item mdui-ripple" data-sort data-sort-name="Onedrive"
+  data-sort-date="2021-07-28 12:47:41" data-sort-size="0 B" style="padding-right: 36px">
+  <a href="https://gcproj.herokuapp.com/Onedrive/">
+    <div class="mdui-row mdui-col-sm-12">
+      <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
+        <i class="mdui-icon material-icons">folder_open</i><span>
+          Onedrive</span>
+      </div>
+      <div class="mdui-col-sm-3 mdui-text-right">
+        2021-07-28 12:47:41
+      </div>
+      <div class="mdui-col-sm-2 mdui-text-right">
+        0 B
+      </div>
+    </div>
+  </a>
+</li>
+<li class="mdui-list-item mdui-ripple" data-sort data-sort-name="AliYun"
+  data-sort-date="2021-07-28 12:47:41" data-sort-size="0 B" style="padding-right: 36px">
+  <a href="https://gcproj.herokuapp.com/Ali/">
+    <div class="mdui-row mdui-col-sm-12">
+      <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
+        <i class="mdui-icon material-icons">folder_open</i><span>
+          AliYun</span>
+      </div>
+      <div class="mdui-col-sm-3 mdui-text-right">
+        2021-07-28 12:47:41
+      </div>
+      <div class="mdui-col-sm-2 mdui-text-right">
+        0 B
+      </div>
+    </div>
+  </a>
+</li>
+ 
+  </ul>
+</div>
+<div class="mdui-fab-wrapper" mdui-fab="{trigger: 'hover'}">
+  <button class="mdui-fab mdui-ripple">
+    <!-- 默认显示的图标 -->
+    <i class="mdui-icon material-icons">add</i>
+    <!-- 在拨号菜单开始打开时，平滑切换到该图标，若不需要切换图标，则可以省略该元素 -->
+    <i class="mdui-icon mdui-fab-opened material-icons">add</i>
+  </button>
+  <div class="mdui-fab-dial">
+    <button class="mdui-fab mdui-fab mdui-ripple"><i class="mdui-icon material-icons">contacts</i></button>
+    <button class="mdui-fab mdui-fab mdui-ripple" mdui-dialog="{target: '#about_theme'}"><i class="mdui-icon material-icons">info_outline</i></button>
+  </div>
+</div>
+<script>
+  document.querySelector("#admin-menu").innerHTML +=
+    '<li class="mdui-menu-item"><a href="javascript:void(0);"class="mdui-ripple getalllink"><i class="mdui-menu-item-icon mdui-icon material-icons">link</i>批量链接</a></li>';
+</script>
+<script>
+  window.MorePage = undefined;
+</script>
+ 
+</div>
+<!--</body>-->
+
+<div class="mdui-dialog mdui-dialog-alert" id="about_theme" style="top: 377.5px; height: 252px;"><div class="mdui-dialog-title">关于renexmoe</div><div class="mdui-dialog-content" style="height: 132px;"><div class="mdui-typo">Base on <a href="https://github.com/186526/onemanager-theme-renexmoe">Onemanager-theme-renexmoe v1.3</a><br>Open source under GPL-3.0 License<br>Build with Love &amp; MDUI &amp; Gulp &amp; snowpack | webpack<br></div></div> </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jssycszyj/renexmoe-cdn@v21042004/js/app@1b381f3c.e97cc2d3068a6fbd4e83.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jssycszyj/renexmoe-cdn@v21042004/js/app@493df0b3.930b7384370c541dd4ba.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jssycszyj/renexmoe-cdn@v21042004/js/webpack-runtime.f563ba1f9a4a0a310500.js"></script>
+</html>
